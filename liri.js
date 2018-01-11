@@ -9,7 +9,6 @@ for (var i = 3; i < process.argv.length; i++) {
 processCommand(command)
 
 function processCommand(command) {
-  console.log(`Command:${command}`)
   if (command === 'my-tweets') {
     tweets()
   } else if (command === 'spotify-this-song') {
@@ -131,7 +130,8 @@ function doit(filename) {
     if (error) {
       console.error(error)
     } else {
-      processCommand(data.replace(',', ' '))
+      extraArgs = data.substr(data.indexOf(',') + 1)
+      processCommand(data.substr(0, data.indexOf(',')))
     }
   })
 }
